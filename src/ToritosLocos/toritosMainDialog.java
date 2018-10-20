@@ -21,7 +21,8 @@ public class toritosMainDialog extends JFrame implements ActionListener, ChangeL
 
   public toritosMainDialog() 
 	  { 
-      setLayout(null);
+      MLPS=MLPC=MLPP=MLPMM=FNNP=FNNIO=PNN=FP=false;
+	  setLayout(null);
       setTitle("Toritos inteligentes :)");
       //Etiquetas
       eError=new JLabel("");
@@ -30,8 +31,7 @@ public class toritosMainDialog extends JFrame implements ActionListener, ChangeL
       eCSV=new JLabel("Null");
       eCSV.setBounds(260,10,100,30);
       add(eCSV);
-      
-	  //checkboxes
+      //checkboxes
       cbMLPS=new JCheckBox("Perceptron simple");
       cbMLPS.setBounds(10, 60, 200, 15);
       cbMLPS.addChangeListener(this); add(cbMLPS);
@@ -56,7 +56,9 @@ public class toritosMainDialog extends JFrame implements ActionListener, ChangeL
       cbFP=new JCheckBox("Funciones de peso generales");
       cbFP.setBounds(10, 200, 200, 15);
       cbFP.addChangeListener(this); add(cbFP);
-	 // Botones
+      //activo el que anda
+      cbMLPP.setSelected(true);
+      // Botones
       bCSV=new JButton("Buscar serieDeTiempo.csv");
       bCSV.setBounds(10,10,200,30);
       add(bCSV); bCSV.addActionListener(this);  
@@ -70,7 +72,7 @@ public class toritosMainDialog extends JFrame implements ActionListener, ChangeL
       bCancelar.addActionListener(this);
       }
   
-	public double[][] getMatrix(JLabel etiqueta)
+  public double[][] getMatrix(JLabel etiqueta)
 	   {
 	   CSVReader cr;
 	   String[][] sP = new String[10][2];
@@ -119,7 +121,8 @@ public class toritosMainDialog extends JFrame implements ActionListener, ChangeL
 				}
           else
 				{
-                flag=true;
+                System.out.println(prices[0][0]);
+        	    flag=true;
                 System.exit(0);
 				}
 			}
@@ -140,7 +143,7 @@ public class toritosMainDialog extends JFrame implements ActionListener, ChangeL
 	  FP=cbFP.isSelected();
   	  }
 
-public double[][] obtenerMatris() {
+  public double[][] obtenerMatris() {
 	return prices;
 }
 
